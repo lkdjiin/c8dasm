@@ -59,6 +59,8 @@ module C8dasm
           "LD ST, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '33'
           "LD B, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '65'
+          "LD V#{@opcode[1]}, [I]"
         end
       end
     end
@@ -104,6 +106,8 @@ module C8dasm
           "Set sound timer = V#{@opcode[1]}."
         elsif @opcode[2, 2] == '33'
           "Store BCD of V#{@opcode[1]} at I, I+1, and I+2."
+        elsif @opcode[2, 2] == '65'
+          "Load registers V0..V#{@opcode[1]} starting from I."
         end
       end
     end

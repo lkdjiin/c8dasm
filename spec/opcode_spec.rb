@@ -263,6 +263,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f265' do
+    before { @opcode = Opcode.new('f265') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f265'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD V2, [I]'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Load registers V0..V2 starting from I.'
+    end
+  end
+
   context 'with opcode 0000' do
     before { @opcode = Opcode.new('0000') }
 
