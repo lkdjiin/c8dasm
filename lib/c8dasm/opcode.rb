@@ -40,6 +40,10 @@ module C8dasm
       when 'a' then "LD I, #{@opcode[1, 3]}"
       when 'c' then "RND V#{@opcode[1]}, #{@opcode[2, 2]}"
       when 'd' then "DRW V#{@opcode[1]}, V#{@opcode[2]}, #{@opcode[3]}"
+      when 'e'
+        if @opcode[2, 2] == 'a1'
+          "SKNP V#{@opcode[1]}"
+        end
       else
         ''
       end
@@ -66,6 +70,10 @@ module C8dasm
       when 'd'
         "Draws #{@opcode[3]}-byte sprite from I " +
         "at (V#{@opcode[1]}, V#{@opcode[2]})"
+      when 'e'
+        if @opcode[2, 2] == 'a1'
+          "Skip next inst. if V#{@opcode[1]} key is not pressed."
+        end
       else
         'WARNING: Unknown instruction!'
       end

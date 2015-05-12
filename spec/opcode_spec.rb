@@ -167,6 +167,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode eda1' do
+    before { @opcode = Opcode.new('eda1') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'eda1'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'SKNP Vd'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Skip next inst. if Vd key is not pressed.'
+    end
+  end
+
   context 'with opcode 0000' do
     before { @opcode = Opcode.new('0000') }
 
