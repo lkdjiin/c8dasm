@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'c8dasm'
+
+reader = Chip8Reader.new(ARGV[0])
+
+counter_base = 0x200
+
+opcodes = reader.opcodes.map_with_index do |item, index|
+  Opcode.new(item, address: counter_base + 2 * index)
+end
+
+opcodes.each {|opcode| puts opcode.line }
