@@ -4,6 +4,54 @@ include C8dasm
 
 describe Opcode do
 
+  context 'with opcode 1200' do
+    before { @opcode = Opcode.new('1200') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '1200'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'JP 200'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Jump to location 200.'
+    end
+  end
+
+  context 'with opcode 3201' do
+    before { @opcode = Opcode.new('3201') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '3201'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'SE V2, 01'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Skip next instruction if V2 = 01.'
+    end
+  end
+
+  context 'with opcode 7004' do
+    before { @opcode = Opcode.new('7004') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '7004'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'ADD V0, 04'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'V0 = V0 + 04.'
+    end
+  end
+
   context 'with opcode a21e' do
     before { @opcode = Opcode.new('a21e') }
 
@@ -53,7 +101,22 @@ describe Opcode do
     it 'returns a comment' do
       expect(@opcode.comment).to eq 'Puts random byte AND 01 into register V2.'
     end
+  end
 
+  context 'with opcode d014' do
+    before { @opcode = Opcode.new('d014') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'd014'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'DRW V0, V1, 4'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Draws 4-byte sprite from I at (V0, V1)'
+    end
   end
 
   context 'with opcode 0000' do
