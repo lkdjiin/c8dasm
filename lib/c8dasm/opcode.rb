@@ -50,6 +50,12 @@ module C8dasm
         if @opcode[2, 2] == 'a1'
           "SKNP V#{@opcode[1]}"
         end
+      when 'f'
+        if @opcode[2, 2] == '18'
+          "LD ST, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '33'
+          "LD B, V#{@opcode[1]}"
+        end
       else
         ''
       end
@@ -86,6 +92,12 @@ module C8dasm
       when 'e'
         if @opcode[2, 2] == 'a1'
           "Skip next inst. if V#{@opcode[1]} key is not pressed."
+        end
+      when 'f'
+        if @opcode[2, 2] == '18'
+          "Set sound timer = V#{@opcode[1]}."
+        elsif @opcode[2, 2] == '33'
+          "Store BCD of V#{@opcode[1]} at I, I+1, and I+2."
         end
       else
         'WARNING: Unknown instruction!'

@@ -215,6 +215,38 @@ describe Opcode do
     end
   end
 
+  context 'with opcode fd18' do
+    before { @opcode = Opcode.new('fd18') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'fd18'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD ST, Vd'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set sound timer = Vd.'
+    end
+  end
+
+  context 'with opcode f733' do
+    before { @opcode = Opcode.new('f733') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f733'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD B, V7'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Store BCD of V7 at I, I+1, and I+2.'
+    end
+  end
+
   context 'with opcode 0000' do
     before { @opcode = Opcode.new('0000') }
 
