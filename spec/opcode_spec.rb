@@ -4,6 +4,22 @@ include C8dasm
 
 describe Opcode do
 
+  context 'with opcode 00ee' do
+    before { @opcode = Opcode.new('00ee') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '00ee'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'RET'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Returns from this subroutine.'
+    end
+  end
+
   context 'with opcode 1200' do
     before { @opcode = Opcode.new('1200') }
 

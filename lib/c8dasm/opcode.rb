@@ -18,8 +18,8 @@ module C8dasm
     # address - The Fixnum address of this opcode. Default is 0x200.
     def initialize(opcode, address: 0x200)
       @opcode = opcode
-      @assembly = compute_assembly
-      @comment = compute_comment
+      @assembly = compute_assembly || ''
+      @comment = compute_comment || 'WARNING: Unknown instruction!'
       @address = sprintf("%03x", address)
       @line = "#@address:#@opcode  " + sprintf("%-14s", @assembly) +
               ";#@comment"
@@ -31,6 +31,10 @@ module C8dasm
 
     def compute_assembly
       case @opcode[0]
+      when '0'
+        if @opcode == '00ee'
+          "RET"
+        end
       when '1' then "JP #{@opcode[1, 3]}"
       when '2' then "CALL #{@opcode[1, 3]}"
       when '3' then "SE V#{@opcode[1]}, #{@opcode[2, 2]}"
@@ -56,13 +60,15 @@ module C8dasm
         elsif @opcode[2, 2] == '33'
           "LD B, V#{@opcode[1]}"
         end
-      else
-        ''
       end
     end
 
     def compute_comment
       case @opcode[0]
+      when '0'
+        if @opcode == '00ee'
+          "Returns from this subroutine."
+        end
       when '1'
         "Jump to location #{@opcode[1, 3]}."
       when '2'
@@ -99,8 +105,6 @@ module C8dasm
         elsif @opcode[2, 2] == '33'
           "Store BCD of V#{@opcode[1]} at I, I+1, and I+2."
         end
-      else
-        'WARNING: Unknown instruction!'
       end
     end
 
