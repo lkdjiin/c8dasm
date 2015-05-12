@@ -20,6 +20,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode 22a2' do
+    before { @opcode = Opcode.new('22a2') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '22a2'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'CALL 2a2'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Call subroutine at 2a2.'
+    end
+  end
+
   context 'with opcode 3201' do
     before { @opcode = Opcode.new('3201') }
 
@@ -33,6 +49,38 @@ describe Opcode do
 
     it 'returns a comment' do
       expect(@opcode.comment).to eq 'Skip next instruction if V2 = 01.'
+    end
+  end
+
+  context 'with opcode 4800' do
+    before { @opcode = Opcode.new('4800') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '4800'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'SNE V8, 00'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Skip next instruction if V8 != 00.'
+    end
+  end
+
+  context 'with opcode 6012' do
+    before { @opcode = Opcode.new('6012') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '6012'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD V0, 12'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Puts the value 12 into register V0.'
     end
   end
 
@@ -82,7 +130,7 @@ describe Opcode do
   describe '#line' do
     it 'returns a fully formated line for the desassembly' do
       opcode = Opcode.new('a21e', address: 1024)
-      expected = '400:a21e  LD I, 21e  ;Puts 21e into register I.'
+      expected = '400:a21e  LD I, 21e     ;Puts 21e into register I.'
       expect(opcode.line).to eq expected
     end
   end

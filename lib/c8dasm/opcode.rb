@@ -21,7 +21,8 @@ module C8dasm
       @assembly = compute_assembly
       @comment = compute_comment
       @address = sprintf("%03x", address)
-      @line = "#@address:#@opcode  #@assembly  ;#@comment"
+      @line = "#@address:#@opcode  " + sprintf("%-14s", @assembly) +
+              ";#@comment"
     end
 
     attr_reader :opcode, :assembly, :comment, :address, :line
@@ -31,7 +32,10 @@ module C8dasm
     def compute_assembly
       case @opcode[0]
       when '1' then "JP #{@opcode[1, 3]}"
+      when '2' then "CALL #{@opcode[1, 3]}"
       when '3' then "SE V#{@opcode[1]}, #{@opcode[2, 2]}"
+      when '4' then "SNE V#{@opcode[1]}, #{@opcode[2, 2]}"
+      when '6' then "LD V#{@opcode[1]}, #{@opcode[2, 2]}"
       when '7' then "ADD V#{@opcode[1]}, #{@opcode[2, 2]}"
       when 'a' then "LD I, #{@opcode[1, 3]}"
       when 'c' then "RND V#{@opcode[1]}, #{@opcode[2, 2]}"
@@ -45,8 +49,14 @@ module C8dasm
       case @opcode[0]
       when '1'
         "Jump to location #{@opcode[1, 3]}."
+      when '2'
+        "Call subroutine at #{@opcode[1, 3]}."
       when '3'
         "Skip next instruction if V#{@opcode[1]} = #{@opcode[2, 2]}."
+      when '4'
+        "Skip next instruction if V#{@opcode[1]} != #{@opcode[2, 2]}."
+      when '6'
+        "Puts the value #{@opcode[2, 2]} into register V#{@opcode[1]}."
       when '7'
         "V#{@opcode[1]} = V#{@opcode[1]} + #{@opcode[2, 2]}."
       when 'a'
