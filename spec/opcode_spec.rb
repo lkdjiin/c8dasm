@@ -247,6 +247,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f029' do
+    before { @opcode = Opcode.new('f029') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f029'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD F, V0'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set I = location of sprite for digit V0.'
+    end
+  end
+
   context 'with opcode f733' do
     before { @opcode = Opcode.new('f733') }
 

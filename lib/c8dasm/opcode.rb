@@ -57,6 +57,8 @@ module C8dasm
       when 'f'
         if @opcode[2, 2] == '18'
           "LD ST, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '29'
+          "LD F, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '33'
           "LD B, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '65'
@@ -104,6 +106,8 @@ module C8dasm
       when 'f'
         if @opcode[2, 2] == '18'
           "Set sound timer = V#{@opcode[1]}."
+        elsif @opcode[2, 2] == '29'
+          "Set I = location of sprite for digit V#{@opcode[1]}."
         elsif @opcode[2, 2] == '33'
           "Store BCD of V#{@opcode[1]} at I, I+1, and I+2."
         elsif @opcode[2, 2] == '65'
