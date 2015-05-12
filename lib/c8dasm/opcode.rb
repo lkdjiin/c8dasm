@@ -37,6 +37,12 @@ module C8dasm
       when '4' then "SNE V#{@opcode[1]}, #{@opcode[2, 2]}"
       when '6' then "LD V#{@opcode[1]}, #{@opcode[2, 2]}"
       when '7' then "ADD V#{@opcode[1]}, #{@opcode[2, 2]}"
+      when '8'
+        if @opcode[3] == '2'
+          "AND V#{@opcode[1]}, V#{@opcode[2]}"
+        elsif @opcode[3] == '4'
+          "ADD V#{@opcode[1]}, V#{@opcode[2]}"
+        end
       when 'a' then "LD I, #{@opcode[1, 3]}"
       when 'c' then "RND V#{@opcode[1]}, #{@opcode[2, 2]}"
       when 'd' then "DRW V#{@opcode[1]}, V#{@opcode[2]}, #{@opcode[3]}"
@@ -63,6 +69,13 @@ module C8dasm
         "Puts the value #{@opcode[2, 2]} into register V#{@opcode[1]}."
       when '7'
         "V#{@opcode[1]} = V#{@opcode[1]} + #{@opcode[2, 2]}."
+      when '8'
+        if @opcode[3] == '2'
+          "Set V#{@opcode[1]} = V#{@opcode[1]} AND V#{@opcode[2]}."
+        elsif @opcode[3] == '4'
+          "Set V#{@opcode[1]} = V#{@opcode[1]} + V#{@opcode[2]}, " +
+          "set VF = carry."
+        end
       when 'a'
         "Puts #{@opcode[1, 3]} into register I."
       when 'c'
