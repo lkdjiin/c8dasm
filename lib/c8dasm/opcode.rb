@@ -61,6 +61,8 @@ module C8dasm
           "LD DT, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '18'
           "LD ST, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '1e'
+          "ADD I, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '29'
           "LD F, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '33'
@@ -114,6 +116,8 @@ module C8dasm
           "Set delay timer = V#{@opcode[1]}."
         elsif @opcode[2, 2] == '18'
           "Set sound timer = V#{@opcode[1]}."
+        elsif @opcode[2, 2] == '1e'
+          "Set I = I + V#{@opcode[1]}."
         elsif @opcode[2, 2] == '29'
           "Set I = location of sprite for digit V#{@opcode[1]}."
         elsif @opcode[2, 2] == '33'

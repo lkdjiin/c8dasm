@@ -279,6 +279,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f61e' do
+    before { @opcode = Opcode.new('f61e') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f61e'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'ADD I, V6'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set I = I + V6.'
+    end
+  end
+
   context 'with opcode f029' do
     before { @opcode = Opcode.new('f029') }
 
