@@ -231,6 +231,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f515' do
+    before { @opcode = Opcode.new('f515') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f515'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD DT, V5'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set delay timer = V5.'
+    end
+  end
+
   context 'with opcode fd18' do
     before { @opcode = Opcode.new('fd18') }
 

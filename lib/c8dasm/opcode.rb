@@ -55,7 +55,9 @@ module C8dasm
           "SKNP V#{@opcode[1]}"
         end
       when 'f'
-        if @opcode[2, 2] == '18'
+        if @opcode[2, 2] == '15'
+          "LD DT, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '18'
           "LD ST, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '29'
           "LD F, V#{@opcode[1]}"
@@ -104,7 +106,9 @@ module C8dasm
           "Skip next inst. if V#{@opcode[1]} key is not pressed."
         end
       when 'f'
-        if @opcode[2, 2] == '18'
+        if @opcode[2, 2] == '15'
+          "Set delay timer = V#{@opcode[1]}."
+        elsif @opcode[2, 2] == '18'
           "Set sound timer = V#{@opcode[1]}."
         elsif @opcode[2, 2] == '29'
           "Set I = location of sprite for digit V#{@opcode[1]}."
