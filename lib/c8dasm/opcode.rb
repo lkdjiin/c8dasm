@@ -53,6 +53,8 @@ module C8dasm
       when 'e'
         if @opcode[2, 2] == 'a1'
           "SKNP V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '9e'
+          "SKP V#{@opcode[1]}"
         end
       when 'f'
         if @opcode[2, 2] == '07'
@@ -108,6 +110,8 @@ module C8dasm
       when 'e'
         if @opcode[2, 2] == 'a1'
           "Skip next inst. if V#{@opcode[1]} key is not pressed."
+        elsif @opcode[2, 2] == '9e'
+          "Skip next inst. if V#{@opcode[1]} key is pressed."
         end
       when 'f'
         if @opcode[2, 2] == '07'
