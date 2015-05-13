@@ -55,7 +55,9 @@ module C8dasm
           "SKNP V#{@opcode[1]}"
         end
       when 'f'
-        if @opcode[2, 2] == '15'
+        if @opcode[2, 2] == '07'
+          "LD V#{@opcode[1]}, DT"
+        elsif @opcode[2, 2] == '15'
           "LD DT, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '18'
           "LD ST, V#{@opcode[1]}"
@@ -106,7 +108,9 @@ module C8dasm
           "Skip next inst. if V#{@opcode[1]} key is not pressed."
         end
       when 'f'
-        if @opcode[2, 2] == '15'
+        if @opcode[2, 2] == '07'
+          "Set V#{@opcode[1]} = delay timer value."
+        elsif @opcode[2, 2] == '15'
           "Set delay timer = V#{@opcode[1]}."
         elsif @opcode[2, 2] == '18'
           "Set sound timer = V#{@opcode[1]}."
