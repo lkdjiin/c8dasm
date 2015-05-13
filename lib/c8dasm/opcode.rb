@@ -34,6 +34,8 @@ module C8dasm
       when '0'
         if @opcode == '00ee'
           "RET"
+        elsif @opcode == '00e0'
+          "CLS"
         end
       when '1' then "JP #{@opcode[1, 3]}"
       when '2' then "CALL #{@opcode[1, 3]}"
@@ -80,6 +82,8 @@ module C8dasm
       when '0'
         if @opcode == '00ee'
           "Returns from this subroutine."
+        elsif @opcode == '00e0'
+          "Clear the display."
         end
       when '1'
         "Jump to location #{@opcode[1, 3]}."
