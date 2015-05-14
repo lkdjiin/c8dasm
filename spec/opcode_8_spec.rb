@@ -4,6 +4,22 @@ include C8dasm
 
 describe Opcode do
 
+  describe '8a10' do
+    before { @opcode = Opcode.new('8a10') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '8a10'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD Va, V1'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set Va = V1.'
+    end
+  end
+
   describe '8d52' do
     before { @opcode = Opcode.new('8d52') }
 

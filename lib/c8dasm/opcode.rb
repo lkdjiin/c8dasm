@@ -44,7 +44,9 @@ module C8dasm
       when '6' then "LD V#{@opcode[1]}, #{@opcode[2, 2]}"
       when '7' then "ADD V#{@opcode[1]}, #{@opcode[2, 2]}"
       when '8'
-        if @opcode[3] == '2'
+        if @opcode[3] == '0'
+          "LD V#{@opcode[1]}, V#{@opcode[2]}"
+        elsif @opcode[3] == '2'
           "AND V#{@opcode[1]}, V#{@opcode[2]}"
         elsif @opcode[3] == '4'
           "ADD V#{@opcode[1]}, V#{@opcode[2]}"
@@ -102,7 +104,9 @@ module C8dasm
       when '7'
         "V#{@opcode[1]} = V#{@opcode[1]} + #{@opcode[2, 2]}."
       when '8'
-        if @opcode[3] == '2'
+        if @opcode[3] == '0'
+          "Set V#{@opcode[1]} = V#{@opcode[2]}."
+        elsif @opcode[3] == '2'
           "Set V#{@opcode[1]} = V#{@opcode[1]} AND V#{@opcode[2]}."
         elsif @opcode[3] == '4'
           "Set V#{@opcode[1]} = V#{@opcode[1]} + V#{@opcode[2]}, " +
