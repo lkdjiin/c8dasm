@@ -5,11 +5,12 @@ module C8dasm
   # Examples
   #
   #   o = Opcode.new('a21e')
+  #   o.line     #=> '200:a21e  LD I, 21e  ;Puts 21e into register I.'
+  #
   #   o.opcode   #=> 'a21e'
   #   o.assembly #=> 'LD I, 21e'
   #   o.comment  #=> 'Puts 21e into register I.'
   #   o.address  #=> '200'
-  #   o.line     #=> '200:a21e  LD I, 21e  ;Puts 21e into register I.'
   class Opcode
 
     # Creates a new Opcode instance.
@@ -17,73 +18,20 @@ module C8dasm
     # opcode  - The String opcode to represents.
     # address - The Fixnum address of this opcode. Default is 0x200.
     def initialize(opcode, address: 0x200)
+      asm = Assembly.new(opcode)
+      @assembly = asm.to_s
+
       @opcode = opcode
-      @assembly = compute_assembly || ''
       @comment = compute_comment || 'WARNING: Unknown instruction!'
       @address = sprintf("%03x", address)
-      @line = "#@address:#@opcode  " + sprintf("%-14s", @assembly) +
+      @line = "#@address:#@opcode  " +
+              sprintf("%-14s", @assembly) +
               ";#@comment"
     end
 
     attr_reader :opcode, :assembly, :comment, :address, :line
 
     private
-
-    def compute_assembly
-      case @opcode[0]
-      when '0'
-        if @opcode == '00ee'
-          "RET"
-        elsif @opcode == '00e0'
-          "CLS"
-        end
-      when '1' then "JP #{@opcode[1, 3]}"
-      when '2' then "CALL #{@opcode[1, 3]}"
-      when '3' then "SE V#{@opcode[1]}, #{@opcode[2, 2]}"
-      when '4' then "SNE V#{@opcode[1]}, #{@opcode[2, 2]}"
-      when '6' then "LD V#{@opcode[1]}, #{@opcode[2, 2]}"
-      when '7' then "ADD V#{@opcode[1]}, #{@opcode[2, 2]}"
-      when '8'
-        if @opcode[3] == '0'
-          "LD V#{@opcode[1]}, V#{@opcode[2]}"
-        elsif @opcode[3] == '2'
-          "AND V#{@opcode[1]}, V#{@opcode[2]}"
-        elsif @opcode[3] == '4'
-          "ADD V#{@opcode[1]}, V#{@opcode[2]}"
-        elsif @opcode[3] == '5'
-          "SUB V#{@opcode[1]}, V#{@opcode[2]}"
-        end
-      when 'a' then "LD I, #{@opcode[1, 3]}"
-      when 'c' then "RND V#{@opcode[1]}, #{@opcode[2, 2]}"
-      when 'd' then "DRW V#{@opcode[1]}, V#{@opcode[2]}, #{@opcode[3]}"
-      when 'e'
-        if @opcode[2, 2] == 'a1'
-          "SKNP V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '9e'
-          "SKP V#{@opcode[1]}"
-        end
-      when 'f'
-        if @opcode[2, 2] == '07'
-          "LD V#{@opcode[1]}, DT"
-        elsif @opcode[2, 2] == '0a'
-          "LD V#{@opcode[1]}, KEY"
-        elsif @opcode[2, 2] == '15'
-          "LD DT, V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '18'
-          "LD ST, V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '1e'
-          "ADD I, V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '29'
-          "LD F, V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '33'
-          "LD B, V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '55'
-          "LD [I], V#{@opcode[1]}"
-        elsif @opcode[2, 2] == '65'
-          "LD V#{@opcode[1]}, [I]"
-        end
-      end
-    end
 
     def compute_comment
       case @opcode[0]
