@@ -279,6 +279,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f00a' do
+    before { @opcode = Opcode.new('f00a') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f00a'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD V0, KEY'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Wait key press, store its value in V0.'
+    end
+  end
+
   context 'with opcode f515' do
     before { @opcode = Opcode.new('f515') }
 

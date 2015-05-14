@@ -61,6 +61,8 @@ module C8dasm
       when 'f'
         if @opcode[2, 2] == '07'
           "LD V#{@opcode[1]}, DT"
+        elsif @opcode[2, 2] == '0a'
+          "LD V#{@opcode[1]}, KEY"
         elsif @opcode[2, 2] == '15'
           "LD DT, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '18'
@@ -120,6 +122,8 @@ module C8dasm
       when 'f'
         if @opcode[2, 2] == '07'
           "Set V#{@opcode[1]} = delay timer value."
+        elsif @opcode[2, 2] == '0a'
+          "Wait key press, store its value in V#{@opcode[1]}."
         elsif @opcode[2, 2] == '15'
           "Set delay timer = V#{@opcode[1]}."
         elsif @opcode[2, 2] == '18'

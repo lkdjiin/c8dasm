@@ -51,7 +51,7 @@ Or install it yourself as:
 [x] Ex9E - SKP Vx
 [x] ExA1 - SKNP Vx
 [x] Fx07 - LD Vx, DT
-[ ] Fx0A - LD Vx, K
+[x] Fx0A - LD Vx, KEY
 [x] Fx15 - LD DT, Vx
 [x] Fx18 - LD ST, Vx
 [x] Fx1E - ADD I, Vx
