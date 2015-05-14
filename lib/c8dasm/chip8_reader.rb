@@ -25,13 +25,12 @@ module C8dasm
     private
 
     def binaries_to_opcodes
-      while true do
-        begin
-          @opcodes << sprintf("%02x%02x", @file.readbyte, @file.readbyte)
-        rescue EOFError
-          break
-        end
+      while not @file.eof?
+        @opcodes << sprintf("%02x%02x", @file.readbyte, @file.readbyte)
       end
+    rescue EOFError
+      puts 'Error while reading entry file.'
+      exit(2)
     end
 
   end
