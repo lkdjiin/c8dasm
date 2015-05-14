@@ -57,7 +57,7 @@ Or install it yourself as:
 [x] Fx1E - ADD I, Vx
 [x] Fx29 - LD F, Vx
 [x] Fx33 - LD B, Vx
-[ ] Fx55 - LD [I], Vx
+[x] Fx55 - LD [I], Vx
 [x] Fx65 - LD Vx, [I]
 
 ## Contributing

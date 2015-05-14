@@ -73,6 +73,8 @@ module C8dasm
           "LD F, V#{@opcode[1]}"
         elsif @opcode[2, 2] == '33'
           "LD B, V#{@opcode[1]}"
+        elsif @opcode[2, 2] == '55'
+          "LD [I], V#{@opcode[1]}"
         elsif @opcode[2, 2] == '65'
           "LD V#{@opcode[1]}, [I]"
         end
@@ -134,6 +136,8 @@ module C8dasm
           "Set I = location of sprite for digit V#{@opcode[1]}."
         elsif @opcode[2, 2] == '33'
           "Store BCD of V#{@opcode[1]} at I, I+1, and I+2."
+        elsif @opcode[2, 2] == '55'
+          "Store registers V0..V#{@opcode[1]} starting at I."
         elsif @opcode[2, 2] == '65'
           "Load registers V0..V#{@opcode[1]} starting from I."
         end

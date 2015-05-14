@@ -391,6 +391,22 @@ describe Opcode do
     end
   end
 
+  context 'with opcode f055' do
+    before { @opcode = Opcode.new('f055') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq 'f055'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'LD [I], V0'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Store registers V0..V0 starting at I.'
+    end
+  end
+
   context 'with opcode 0000' do
     before { @opcode = Opcode.new('0000') }
 
