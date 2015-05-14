@@ -34,12 +34,12 @@ Or install it yourself as:
 [ ] 5xy0 - SE Vx, Vy
 [x] 6xkk - LD Vx, byte
 [x] 7xkk - ADD Vx, byte
-[ ] 8xy0 - LD Vx, Vy
+[x] 8xy0 - LD Vx, Vy
 [ ] 8xy1 - OR Vx, Vy
 [x] 8xy2 - AND Vx, Vy
 [ ] 8xy3 - XOR Vx, Vy
 [x] 8xy4 - ADD Vx, Vy
-[ ] 8xy5 - SUB Vx, Vy
+[x] 8xy5 - SUB Vx, Vy
 [ ] 8xy6 - SHR Vx {, Vy}
 [ ] 8xy7 - SUBN Vx, Vy
 [ ] 8xyE - SHL Vx {, Vy}

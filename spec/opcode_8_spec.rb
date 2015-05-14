@@ -52,4 +52,20 @@ describe Opcode do
     end
   end
 
+  describe '8b25' do
+    before { @opcode = Opcode.new('8b25') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '8b25'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'SUB Vb, V2'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set Vb = Vb - V2, set VF = NOT borrow.'
+    end
+  end
+
 end

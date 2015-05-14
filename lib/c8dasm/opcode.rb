@@ -50,6 +50,8 @@ module C8dasm
           "AND V#{@opcode[1]}, V#{@opcode[2]}"
         elsif @opcode[3] == '4'
           "ADD V#{@opcode[1]}, V#{@opcode[2]}"
+        elsif @opcode[3] == '5'
+          "SUB V#{@opcode[1]}, V#{@opcode[2]}"
         end
       when 'a' then "LD I, #{@opcode[1, 3]}"
       when 'c' then "RND V#{@opcode[1]}, #{@opcode[2, 2]}"
@@ -111,6 +113,9 @@ module C8dasm
         elsif @opcode[3] == '4'
           "Set V#{@opcode[1]} = V#{@opcode[1]} + V#{@opcode[2]}, " +
           "set VF = carry."
+        elsif @opcode[3] == '5'
+          "Set V#{@opcode[1]} = V#{@opcode[1]} - V#{@opcode[2]}, " +
+          "set VF = NOT borrow."
         end
       when 'a'
         "Puts #{@opcode[1, 3]} into register I."
