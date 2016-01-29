@@ -46,7 +46,7 @@ Or install it yourself as:
 [x] 2nnn - CALL addr
 [x] 3xkk - SE Vx, byte
 [x] 4xkk - SNE Vx, byte
-[ ] 5xy0 - SE Vx, Vy
+[x] 5xy0 - SE Vx, Vy
 [x] 6xkk - LD Vx, byte
 [x] 7xkk - ADD Vx, byte
 [x] 8xy0 - LD Vx, Vy
