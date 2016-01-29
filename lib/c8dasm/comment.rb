@@ -14,7 +14,7 @@ module C8dasm
     private
 
     def build_comment
-      klass = Kernel.const_get('Comment' + @opcode[0])
+      klass = Kernel.const_get('C8dasm::Comment' + @opcode[0])
       klass.new(@opcode)
     end
 

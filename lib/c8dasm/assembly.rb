@@ -14,7 +14,7 @@ module C8dasm
     private
 
     def build_assembly
-      klass = Kernel.const_get('Asm' + @opcode[0])
+      klass = Kernel.const_get('C8dasm::Asm' + @opcode[0])
       klass.new(@opcode)
     end
 
