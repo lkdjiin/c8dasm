@@ -9,6 +9,7 @@ module C8dasm
       when '3' then "XOR V#{x}, V#{y}"
       when '4' then "ADD V#{x}, V#{y}"
       when '5' then "SUB V#{x}, V#{y}"
+      when '6' then "SHR V#{x}, V#{y}"
       end
     end
 
