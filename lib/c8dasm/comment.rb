@@ -4,7 +4,7 @@ module C8dasm
 
     def initialize(opcode)
       @opcode = opcode
-      @comment = build_comment.to_s || 'WARNING: Unknown instruction!'
+      @comment = build_comment.to_s || '***WARNING*** UNKNOWN INSTRUCTION!'
     end
 
     def to_s
