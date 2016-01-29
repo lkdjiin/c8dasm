@@ -60,7 +60,7 @@ Or install it yourself as:
 [ ] 8xyE - SHL Vx {, Vy}
 [x] 9xy0 - SNE Vx, Vy
 [x] Annn - LD I, addr
-[ ] Bnnn - JP V0, addr
+[x] Bnnn - JP V0, addr
 [x] Cxkk - RND Vx, byte
 [x] Dxyn - DRW Vx, Vy, nibble
 [x] Ex9E - SKP Vx
