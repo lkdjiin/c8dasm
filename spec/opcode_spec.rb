@@ -38,7 +38,7 @@ describe Opcode do
     end
 
     it 'returns special comment' do
-      expect(@opcode.comment).to eq 'WARNING: Unknown instruction!'
+      expect(@opcode.comment).to eq '***WARNING*** UNKNOWN INSTRUCTION!'
     end
   end
 
