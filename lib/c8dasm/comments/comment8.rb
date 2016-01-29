@@ -16,6 +16,8 @@ module C8dasm
         "Set V#{x} = V#{x} - V#{y}, set VF = NOT borrow."
       when '6'
         "Set V#{x} = V#{y} SHR 1."
+      when 'e'
+        "Set V#{x} = V#{y} SHL 1."
       end
     end
 

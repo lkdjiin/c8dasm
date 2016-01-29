@@ -99,4 +99,21 @@ describe Opcode do
       expect(@opcode.comment).to eq 'Set V7 = Va SHR 1.'
     end
   end
+
+  describe '87ae' do
+    before { @opcode = Opcode.new('87ae') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '87ae'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'SHL V7, Va'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set V7 = Va SHL 1.'
+    end
+  end
+
 end

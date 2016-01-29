@@ -55,9 +55,9 @@ Or install it yourself as:
 [x] 8xy3 - XOR Vx, Vy
 [x] 8xy4 - ADD Vx, Vy
 [x] 8xy5 - SUB Vx, Vy
-[ ] 8xy6 - SHR Vx {, Vy}
+[x] 8xy6 - SHR Vx {, Vy}
 [ ] 8xy7 - SUBN Vx, Vy
-[ ] 8xyE - SHL Vx {, Vy}
+[x] 8xyE - SHL Vx {, Vy}
 [x] 9xy0 - SNE Vx, Vy
 [x] Annn - LD I, addr
 [x] Bnnn - JP V0, addr
