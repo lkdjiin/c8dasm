@@ -36,6 +36,22 @@ describe Opcode do
     end
   end
 
+  describe '8903' do
+    before { @opcode = Opcode.new('8903') }
+
+    it 'returns the opcode' do
+      expect(@opcode.opcode).to eq '8903'
+    end
+
+    it 'returns the assembly' do
+      expect(@opcode.assembly).to eq 'XOR V9, V0'
+    end
+
+    it 'returns a comment' do
+      expect(@opcode.comment).to eq 'Set V9 = V9 XOR V0.'
+    end
+  end
+
   describe '8bd4' do
     before { @opcode = Opcode.new('8bd4') }
 

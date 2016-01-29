@@ -52,7 +52,7 @@ Or install it yourself as:
 [x] 8xy0 - LD Vx, Vy
 [ ] 8xy1 - OR Vx, Vy
 [x] 8xy2 - AND Vx, Vy
-[ ] 8xy3 - XOR Vx, Vy
+[x] 8xy3 - XOR Vx, Vy
 [x] 8xy4 - ADD Vx, Vy
 [x] 8xy5 - SUB Vx, Vy
 [ ] 8xy6 - SHR Vx {, Vy}

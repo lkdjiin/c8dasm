@@ -6,6 +6,7 @@ module C8dasm
       case last_opcode
       when '0' then "LD V#{x}, V#{y}"
       when '2' then "AND V#{x}, V#{y}"
+      when '3' then "XOR V#{x}, V#{y}"
       when '4' then "ADD V#{x}, V#{y}"
       when '5' then "SUB V#{x}, V#{y}"
       end

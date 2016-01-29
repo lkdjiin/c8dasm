@@ -8,6 +8,8 @@ module C8dasm
         "Set V#{x} = V#{y}."
       when '2'
         "Set V#{x} = V#{x} AND V#{y}."
+      when '3'
+        "Set V#{x} = V#{x} XOR V#{y}."
       when '4'
         "Set V#{x} = V#{x} + V#{y}, set VF = carry."
       when '5'
