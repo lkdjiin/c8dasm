@@ -27,6 +27,10 @@ Install it as:
     212:7104  ADD V1, 04    ;V1 = V1 + 04.
     ...
 
+## License
+
+GPLv3
+
 ## Standard Chip-8 Instructions (What's remain to do)
 
 - [x] 00E0 - CLS
