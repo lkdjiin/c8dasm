@@ -8,10 +8,10 @@ Gem::Specification.new do |spec|
   spec.version       = C8dasm::VERSION
   spec.authors       = ["lkdjiin"]
   spec.email         = ["xavier.nayrac@gmail.com"]
-  spec.summary       = %q{Desassembler for Chip8 binaries.}
-  spec.description   = %q{c8dasm is a utility to desassemble a Chip8 binary file.}
+  spec.summary       = %q{Disassembler for Chip8 binaries.}
+  spec.description   = %q{c8dasm is a utility to disassemble a Chip8 binary file.}
   spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.license       = "GPLv3"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
